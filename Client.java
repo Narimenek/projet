@@ -17,7 +17,7 @@ public class Client extends Utilisateurs {
 	    private String email;
 	    private String motDePasse;
 	    public Location location;
-	    private Connection connection;
+	   
 	     static String url = "jdbc:mysql://localhost/luxedrive";
 	   static   String user = "root";
 	    static  String passwd = "root";
@@ -28,28 +28,22 @@ public class Client extends Utilisateurs {
 	    	this.tel=t;
 	    	this.idClient=id;
 	    	this.compteur++;
+	    
 
                        
 	    }  
-	    
 	    public void insererClient() {
-	       
-
 	        try (Connection connection = DriverManager.getConnection(url, user, passwd)) {
-	            String SQL = "INSERT INTO `client`(`idClient`, `nomClient`, `tel`, `email`, `motDePasse`, `idUtilisateur`) " +
-	                         "VALUES (?, ?, ?, ?, ?, NULL)";
+	            String SQL = "INSERT INTO `client`(`idClient`, `nomClient`, `tel`, `email`, `motDePasse`, `idUtilisateur`, `estConnecte`) " +
+	                         "VALUES (?, ?, ?, ?, ?, NULL, false)";
 
-	            // Création de la requête préparée
 	            try (PreparedStatement statement = connection.prepareStatement(SQL)) {
-	                // Définition des valeurs à insérer
 	                statement.setInt(1, this.idClient); 
 	                statement.setString(2, this.nomClient); 
 	                statement.setString(3, this.tel); 
 	                statement.setString(4, this.email);
 	                statement.setString(5, this.motDePasse); 
-	                //statement.setNull(idUtilisateur, compteur); 
 
-	                // Exécution de la requête
 	                int rowsAffected = statement.executeUpdate();
 	                if (rowsAffected > 0) {
 	                    System.out.println("Données insérées avec succès !");
@@ -61,8 +55,11 @@ public class Client extends Utilisateurs {
 	            throw new RuntimeException(exception);
 	        }
 	    }
-	
-	        
+
+	  
+
+
+	   
 	    
 	       
 	   
@@ -98,7 +95,7 @@ public class Client extends Utilisateurs {
 	    	        e.printStackTrace();
 	    	    }
 	    	    return false;
-	    	}	    	
+	    	}	   	
 	    	
 	    public String getNomClient() {
 			return nomClient;
@@ -149,5 +146,4 @@ public class Client extends Utilisateurs {
 	        }
 	    }
 	}
-
 

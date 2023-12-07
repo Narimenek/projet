@@ -13,109 +13,71 @@ public class VoitureDeLuxe {
     private String immatriculation;
     private  String marque;
     private String lien_img;
-    public String getLien_img() {
-		return lien_img;
-	}
-    static String url = "jdbc:mysql://localhost/luxedrive";
-	   static   String user = "root";
-	    static  String passwd = "root";
-
-
-
-	public void setLien_img(String lien_img) {
-		this.lien_img = lien_img;
-	}
-
-
-
-	public int getIdVoiture() {
-		return idVoiture;
-	}
-
-
-
-	public void setIdVoiture(int idVoiture) {
-		this.idVoiture = idVoiture;
-	}
-
-
-
-	public String getCouleur() {
-		return couleur;
-	}
-
-
-
-	public void setCouleur(String couleur) {
-		this.couleur = couleur;
-	}
-
-
-
-	public String getImmatriculation() {
-		return immatriculation;
-	}
-
-
-
-	public void setImmatriculation(String immatriculation) {
-		this.immatriculation = immatriculation;
-	}
-
-
-
-	public String getMarque() {
-		return marque;
-	}
-
-
-
-	public void setMarque(String marque) {
-		this.marque = marque;
-	}
-
-
-
-	public float getPrixLocation() {
-		return prixLocation;
-	}
-
-
-
-	public void setPrixLocation(float prixLocation) {
-		this.prixLocation = prixLocation;
-	}
-
-
-
-	public String getStatutDeDisponibilite() {
-		return statutDeDisponibilite;
-	}
-
-
-
-	public void setStatutDeDisponibilite(String statutDeDisponibilite) {
-		this.statutDeDisponibilite = statutDeDisponibilite;
-	}
-
-	private float prixLocation;
+	private double prixLocation;
     private String statutDeDisponibilite;
-
-    public void Voiture(int id, String couleur, String immatriculation, String marque, float prix, String statut) {
+    static String url = "jdbc:mysql://localhost/luxedrive";
+	static   String user = "root";
+	static  String passwd = "root";
+    public  VoitureDeLuxe(int id, String couleur, String immatriculation, String marque, double d, String img) {
         this.idVoiture = id;
         this.couleur = couleur;
         this.immatriculation = immatriculation;
         this.marque = marque;
-        this.prixLocation = prix;
-        this.statutDeDisponibilite = statut;
-       
+        this.prixLocation = d;
+        this.lien_img = img;
+      
     }
-    public void insererClient() {
+    // get et set
+    public String getLien_img() {
+		return lien_img;
+	}
+	public void setLien_img(String lien_img) {
+		this.lien_img = lien_img;
+	}
+	public int getIdVoiture() {
+		return idVoiture;
+	}
+	public void setIdVoiture(int idVoiture) {
+		this.idVoiture = idVoiture;
+	}
+	public String getCouleur() {
+		return couleur;
+	}
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
+	}
+	public String getImmatriculation() {
+		return immatriculation;
+	}
+	public void setImmatriculation(String immatriculation) {
+		this.immatriculation = immatriculation;
+	}
+	public String getMarque() {
+		return marque;
+	}
+	public void setMarque(String marque) {
+		this.marque = marque;
+	}
+	public double getPrixLocation() {
+		return prixLocation;
+	}
+	public void setPrixLocation(float prixLocation) {
+		this.prixLocation = prixLocation;
+	}
+	public String getStatutDeDisponibilite() {
+		return statutDeDisponibilite;
+	}
+	public void setStatutDeDisponibilite(String statutDeDisponibilite) {
+		this.statutDeDisponibilite = statutDeDisponibilite;
+	}
+	// fin des get et set
+    public void insererVoiture() {
 	       
 
         try (Connection connection = DriverManager.getConnection(url, user, passwd)) {
             String SQL = "INSERT INTO `voituredeluxe`(`idVoiture`, `Couleur`, `immatriculation`, `marque`, `prixLocation`, `lien_img`)"
             		+ " VALUES (?,?,?,?,?,?)";
+            
             
 
             // Création de la requête préparée
@@ -125,8 +87,8 @@ public class VoitureDeLuxe {
                 statement.setString(2, this.couleur); 
                 statement.setString(3, this.immatriculation); 
                 statement.setString(4, this.marque);
-                statement.setFloat(1, this.prixLocation);
-                statement.setString(5, this.lien_img); 
+                statement.setDouble(5, this.prixLocation);
+                statement.setString(6, this.lien_img); 
 
                 // Exécution de la requête
                 int rowsAffected = statement.executeUpdate();
@@ -143,8 +105,9 @@ public class VoitureDeLuxe {
    
 	 public void SupprimerVoiture(int id) { 
 		 try (Connection connection = DriverManager.getConnection(url, user, passwd)) {
+			 Connection connection1 = TestConn.connexionDB();
 	            String sql = "DELETE FROM voituredeluxe WHERE idVoiture = ?";
-	            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+	            try (PreparedStatement statement = connection1.prepareStatement(sql)) {
 	                statement.setInt(1, idVoiture);
 	                int rowsDeleted = statement.executeUpdate();
 	                if (rowsDeleted > 0) {
@@ -157,9 +120,40 @@ public class VoitureDeLuxe {
 	            e.printStackTrace();
 	        }
 	    }
+	 public void RechercheVoiture(int idVoiture) {
+		    String sql = "SELECT * FROM voituredeluxe WHERE idVoiture = ?";
+		    Connection connection = null;
+		    try {
+		        connection = DriverManager.getConnection(url, user, passwd);
+		        PreparedStatement statement = connection.prepareStatement(sql);
+
+		        statement.setInt(1, this.idVoiture);
+
+		        ResultSet resultSet = statement.executeQuery();
+		        while (resultSet.next()) {
+
+		            idVoiture = resultSet.getInt("idVoiture");
+		            String marque = resultSet.getString("marque");
+		            String Couleur = resultSet.getString("Couleur");
+		            float prixLocation = resultSet.getFloat("prixLocation");
+
+		            System.out.println("ID: " + idVoiture + ", Marque: " + marque + ", Couleur: " + Couleur + ", prixLocation: " + prixLocation);
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } finally {
+		        try {
+		            if (connection != null) {
+		                connection.close(); // Fermer la connexion après utilisation
+		            }
+		        } catch (SQLException ex) {
+		            ex.printStackTrace();
+		        }
+		    }
+		}
 
 	 
-	 public void RechercheVoiture() {
+	 /*public void RechercheVoiture() {
     	 String sql = "SELECT * FROM voituredeluxe WHERE idVoiture = ?";
          Connection connection = null;
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -182,7 +176,7 @@ public class VoitureDeLuxe {
     	
     }
 
-    public void Operation1() {
-    }
+  */
 
 }
+
