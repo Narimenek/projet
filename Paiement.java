@@ -13,19 +13,22 @@ public class Paiement {
     private int idLocation;
     private String typeDePaiement;
     private int  idClient;
+    private Client Client;
     
     private static final String url = "jdbc:mysql://localhost:3306/luxedrive";
     private static final String user = "root";
     private static final String passwd = "root";
     
     
-    public Paiement(int idPaiement, double montant, Date dateDePaiement, int idLocation, String typeDePaiement, int idClient) {
+    public Paiement(int idPaiement, double montant, Date dateDePaiement, int idLocation, String typeDePaiement, int idClient,Client client) {
         this.idPaiement = idPaiement;
         this.montant = montant;
         this.dateDePaiement = dateDePaiement;
         this.idLocation = idLocation;
         this.typeDePaiement = typeDePaiement;
         this.idClient =idClient;
+        this.Client= client;
+        
     }
     
     public void insertPaiement() {
@@ -59,7 +62,7 @@ public class Paiement {
 	        }
 	    }
     
-    public static Paiement getPaiementById(int idPaiement) {
+    public static Paiement getPaiementById(int idPaiement) throws SQLException {
         PaiementDAO paiementDAO = new PaiementDAO();
         return paiementDAO.getPaiementById(idPaiement);
     }
@@ -121,7 +124,7 @@ public class Paiement {
 	    	System.out.println("Annulation du paiement " + idPaiement + " effectuée avec succès.");
 	    }
 	    
-	    public boolean verifierPaiement() {
+	    public boolean verifierPaiement() throws SQLException {
 	        // Récupérer les informations du paiement depuis la base de données
 	        // (Ceci est une simulation, vous devriez remplacer cela par une vraie requête à votre base de données)
 	        PaiementDAO paiementDAO = new PaiementDAO(); // Suppose une classe DAO (Data Access Object) pour accéder à la base de données

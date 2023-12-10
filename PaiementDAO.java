@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+//une classe appelée PaiementDAO qui agit comme un objet d'accès aux données (DAO) pour effectuer des opérations de base de données liées à l'entité "paiement". La classe utilise JDBC pour interagir avec une base de données MySQL. 
 public class PaiementDAO {
 
     private static final String url = "jdbc:mysql://localhost:3306/luxedrive";
@@ -55,7 +55,7 @@ public class PaiementDAO {
                                     resultSet.getDate("dateDePaiement"),
                                     resultSet.getInt("idLocation"),
                                     resultSet.getString("typeDePaiement"),
-                                    new Client(resultSet.getInt("idClient"))
+                                    idPaiement, new Client(resultSet.getInt("idClient"), SQL, SQL, SQL, SQL)
                             );
                         }
                     }
