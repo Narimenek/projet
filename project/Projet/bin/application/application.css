@@ -1,0 +1,106 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* Définition des styles CSS pour l'application JavaFX */
+
+/* Style pour le conteneur parent */
+.parent {
+    -fx-background-color: transparent;
+}
+
+/* Style pour un panneau avec une couleur de fond spécifique */
+.pane {
+    -fx-background-color: #c83436;
+}
+
+/* Style pour un bouton transparent avec une bordure blanche */
+.trans-btn-white-border {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-text-fill: whitesmoke;
+}
+
+/* Style pour un panneau blanc avec une image de fond centrée */
+.white-pane {
+    -fx-background-image: url("/images/k.jpg");
+    -fx-background-size: 281 386;
+    -fx-background-position: center center;
+    -fx-background-color: #FFFFFF;
+}
+
+/* Style pour une zone de texte avec une bordure inférieure */
+.tf_box {
+    -fx-background-color: transparent;
+    -fx-border-color: #DEDEE4;
+    -fx-border-width: 0px 0px 1px 0px;
+}
+
+/* Style pour une zone de texte avec un fond transparent et un texte de rappel coloré */
+.tf {
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #2C2C2C;
+}
+
+/* Style pour un bouton rose avec des coins arrondis */
+.pink-btn {
+    -fx-background-color: #C5304D;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Style pour un élément avec une couleur de fond spécifique */
+.mot {
+    -fx-background-color: #D3D3D3;
+}
+
+/* Style pour un fond global de l'application */
+.backgrnd {
+    -fx-background-color: #F7F7F7;
+    -fx-background-radius: 0px;
+}
+
+/* Styles spécifiques pour une table et ses cellules */
+.table-view {
+    -fx-background-color: transparent;
+}
+
+.table-view-focused {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
+}
+
+.table-view .column-header-background .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: white;
+}
+
+.table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, #33698F;
+    -fx-background-insets: 0, 0.0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, #78A3C3;
+    -fx-background-insets: 0, 0.0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+/* Style pour des boutons avec une couleur de fond spécifique */
+.buttons {
+    -fx-background-color: #0C0C0C;
+    -fx-background-radius: 5px;
+    -fx-text-fill: #FFFFFF;
+}
