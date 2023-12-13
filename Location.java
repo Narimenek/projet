@@ -20,18 +20,20 @@ public class Location {
     private String idClient;
     private int idVoitureDeLuxe;
     public String StatutLocation;
-    
+    // Paramètres de connexion à la base de données
+
     private static final String url = "jdbc:mysql://localhost:3306/luxedrive";
     private static final String user = "root";
     private static final String passwd = "root";
-    
+    //       Crée une nouvelle entrée de location dans la base de données.
+
     public void CreeLocation() {
     	try (Connection connection = DriverManager.getConnection(url, user, passwd)) {
             
              String query = "INSERT INTO location (datedebut, datefin, avecchauffeur, numchauffeur, idlocation, idclient, idvoituredeluxe, statutlocation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
              
              try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                 // Set values for the parameters
+                 // Définir les valeurs pour les paramètres
             	 preparedStatement.setDate(1, Date.valueOf(datedebut));
                  preparedStatement.setDate(2, Date.valueOf(dateFin));
                  preparedStatement.setBoolean(3, avecChauffeur);
@@ -48,19 +50,85 @@ public class Location {
              e.printStackTrace();
          }
      }
- 
+    // getters et setters pour les autres attributs
+
+    public LocalDate getDatedebut() {
+    	return datedebut;
+    }
+
+    public void setDatedebut(LocalDate datedebut) {
+    	this.datedebut = datedebut;
+    }
+
+    public LocalDate getDateFin() {
+    	return dateFin;
+    }
+
+    public void setDateFin(LocalDate dateFin) {
+    	this.dateFin = dateFin;
+    }
+
+    public boolean isAvecChauffeur() {
+    	return avecChauffeur;
+    }
+
+    public void setAvecChauffeur(boolean avecChauffeur) {
+    	this.avecChauffeur = avecChauffeur;
+    }
+
+    public String getNumChauffeur() {
+    	return numChauffeur;
+    }
+
+    public void setNumChauffeur(String numChauffeur) {
+    	this.numChauffeur = numChauffeur;
+    }
+
+    public int getIdLocation() {
+    	return idLocation;
+    }
+
+    public void setIdLocation(int idLocation) {
+    	this.idLocation = idLocation;
+    }
+
+    public String getIdClient() {
+    	return idClient;
+    }
+
+    public void setIdClient(String idClient) {
+    	this.idClient = idClient;
+    }
+
+    public int getIdVoitureDeLuxe() {
+    	return idVoitureDeLuxe;
+    }
+
+    public void setIdVoitureDeLuxe(int idVoitureDeLuxe) {
+    	this.idVoitureDeLuxe = idVoitureDeLuxe;
+    }
+
+    public String getStatutLocation() {
+    	return StatutLocation;
+    }
+
+    public void setStatutLocation(String statutLocation) {
+    	StatutLocation = statutLocation;
+    }
+ //   Confirme une location dans la base de données en mettant à jour son statut.
+
     public void ConfirmerLocation() {
     	 try (Connection connection = DriverManager.getConnection(url, user, passwd)) {
     	        // Implémentation de la confirmation de location avec JDBC
-    	        // Utilisez des requêtes SQL et des PreparedStatement
+    	        
 
     	        String query = "UPDATE location SET statutlocation = 'CONFIRMEE' WHERE idlocation = ?";
     	        
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-    	            // Set the value for the parameter
+                    // Définir la valeur pour le paramètre
     	            preparedStatement.setInt(1, idLocation);
 
-    	            // Execute the update
+                    // Exécuter la mise à jour
     	            preparedStatement.executeUpdate();
     	        }
 
@@ -71,15 +139,14 @@ public class Location {
     public void AnnulerLocation() {
     	 try (Connection connection = DriverManager.getConnection(url, user, passwd)) {
     	        // Implémentation de l'annulation de location avec JDBC
-    	        // Utilisez des requêtes SQL et des PreparedStatement
 
     	        String query = "UPDATE location SET statutlocation = 'ANNULEE' WHERE idlocation = ?";
     	        
     	        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-    	            // Set the value for the parameter
+                    // Définir la valeur pour le paramètre
     	            preparedStatement.setInt(1, idLocation);
 
-    	            // Execute the update
+    	         // Exécuter la mise à jour
     	            preparedStatement.executeUpdate();
     	        }
 
@@ -100,7 +167,7 @@ public class Location {
 
                          double prixTotal = prixJournalier * dureeEnJours;
 
-                         // Vous pouvez faire ce que vous voulez avec le prix total (par exemple, l'afficher)
+                         // affichage du prix
                          System.out.println("Le prix total de la location est : " + prixTotal);
                      } else {
                          System.out.println("Tarif non trouvé pour la voiture de luxe avec l'ID : " + idVoitureDeLuxe);
@@ -116,23 +183,19 @@ public class Location {
     public void VerifierDiponibilitee() {
    	 try (Connection connection = DriverManager.getConnection(url, user, passwd)) {
              // Implémentation de la vérification de disponibilité avec JDBC
-             // Utilisez des requêtes SQL et des PreparedStatement
-
-             // Supposons que vous avez une table "locations" dans votre base de données
-             String disponibiliteQuery = "SELECT COUNT(*) FROM locations " +
+             
+                         String disponibiliteQuery = "SELECT COUNT(*) FROM locations " +
                                         "WHERE idvoituredeluxe = ? " +
                                         "AND ((datedebut >= ? AND datedebut <= ?) OR (datefin >= ? AND datefin <= ?))";
              
              try (PreparedStatement disponibiliteStatement = connection.prepareStatement(disponibiliteQuery)) {
-                 // Set values for the parameters
-                 disponibiliteStatement.setInt(1, idVoitureDeLuxe);
+                                  disponibiliteStatement.setInt(1, idVoitureDeLuxe);
                  disponibiliteStatement.setDate(2, java.sql.Date.valueOf(datedebut));
                  disponibiliteStatement.setDate(3, java.sql.Date.valueOf(dateFin));
                  disponibiliteStatement.setDate(4, java.sql.Date.valueOf(datedebut));
                  disponibiliteStatement.setDate(5, java.sql.Date.valueOf(dateFin));
 
-                 // Execute the query to check availability
-                 try (ResultSet resultSet = disponibiliteStatement.executeQuery()) {
+                                  try (ResultSet resultSet = disponibiliteStatement.executeQuery()) {
                      if (resultSet.next()) {
                          int count = resultSet.getInt(1);
 
@@ -149,4 +212,10 @@ public class Location {
              e.printStackTrace();
          }
     }
+
+
+
+  
 }
+
+

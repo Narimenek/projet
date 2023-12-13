@@ -8,7 +8,7 @@ public class Facture {
 	    private Date dateEmission;
 	    private double montantTotal;
 	    private boolean estPayee;
-	    private Paiement paiement; // Supposant que chaque facture est associée à un paiement
+	    private Paiement paiement; // chaque facture est associée à un paiement(et pas un client PS: un client peut avoir plusieurs factures)
 
 	    // Constructeur
 	    public Facture(int idFacture, Date dateEmission, double montantTotal, Paiement paiement) {

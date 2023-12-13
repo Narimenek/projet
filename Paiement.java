@@ -19,7 +19,7 @@ public class Paiement {
     private static final String user = "root";
     private static final String passwd = "root";
     
-    
+    // Constructeur de la classe
     public Paiement(int idPaiement, double montant, Date dateDePaiement, int idLocation, String typeDePaiement, int idClient,Client client) {
         this.idPaiement = idPaiement;
         this.montant = montant;
@@ -32,14 +32,17 @@ public class Paiement {
     }
     
     public void insertPaiement() {
+        // Création d'une instance de PaiementDAO pour effectuer l'insertion
     	 PaiementDAO paiementDAO = new PaiementDAO();
          paiementDAO.insertPaiement(this);
      
 	        try (Connection connection = DriverManager.getConnection(url, user, passwd)) {
+	            // Définition de la requête SQL pour l'insertion des données de paiement
+
 	            String SQL = "INSERT INTO paiement (idPaiement, montant, dateDePaiement, idLocation, typeDePaiement, client) " +
 	                         "VALUES (?, ?, ?, ?, ?, ?)";
 
-	            // Création de la requête préparée
+	            // Création de la requête
 	            try (PreparedStatement statement = connection.prepareStatement(SQL)) {
 	                // Définition des valeurs à insérer
 	                statement.setInt(1, this.idPaiement); 
@@ -64,6 +67,8 @@ public class Paiement {
     
     public static Paiement getPaiementById(int idPaiement) throws SQLException {
         PaiementDAO paiementDAO = new PaiementDAO();
+        // Utilisation de la méthode getPaiementById de PaiementDAO pour récupérer le paiement par son ID
+
         return paiementDAO.getPaiementById(idPaiement);
     }
     
@@ -126,13 +131,12 @@ public class Paiement {
 	    
 	    public boolean verifierPaiement() throws SQLException {
 	        // Récupérer les informations du paiement depuis la base de données
-	        // (Ceci est une simulation, vous devriez remplacer cela par une vraie requête à votre base de données)
-	        PaiementDAO paiementDAO = new PaiementDAO(); // Suppose une classe DAO (Data Access Object) pour accéder à la base de données
+	        PaiementDAO paiementDAO = new PaiementDAO(); //  une classe DAO pour accéder à la base de données
 	        Paiement paiementEnBase = paiementDAO.getPaiementById(idPaiement);
 
-	        // Vérifier si le paiement existe en base de données
+	        // Vérifier si le paiement existe dans la base de données
 	        if (paiementEnBase == null) {
-	            System.out.println("Le paiement " + idPaiement + " n'existe pas en base de données.");
+	            System.out.println("Le paiement " + idPaiement + " n'existe pas dans base de données.");
 	            return false;
 	        }
 
@@ -163,7 +167,8 @@ public class Paiement {
 		}
 
 		public Facture genererFacture() {
-	        // Logique pour générer une facture associée à ce paiement
+			//  établir une liaison entre la classe Paiement et la classe Facture 
+	        //  générer une facture associée au paiement
 	        Facture nouvelleFacture = new Facture(idLocation, null, montant, null/* paramètres de la facture */);
 	        return nouvelleFacture;
 	    }
