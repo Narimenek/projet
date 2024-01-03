@@ -34,7 +34,7 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished(e -> {
    		 try {
-				fxml = FXMLLoader.load(getClass().getResource("../interfaces/SignIn.fxml"));
+				fxml = FXMLLoader.load(getClass().getResource("/interfaces/SignIn.fxml"));
 				 VBox.getChildren().removeAll();
 				 VBox.getChildren().setAll(fxml);
 			} catch (Exception el) {
@@ -52,7 +52,7 @@ public class MainController implements Initializable {
         t.play();
         t.setOnFinished(e -> {
       		 try {
-   				fxml = FXMLLoader.load(getClass().getResource("../interfaces/SignUp.fxml"));
+   				fxml = FXMLLoader.load(getClass().getResource("/interfaces/SignUp.fxml"));
    				 VBox.getChildren().removeAll();
    				 VBox.getChildren().setAll(fxml);
    			} catch (Exception el) {

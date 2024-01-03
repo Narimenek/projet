@@ -10,7 +10,7 @@
 
 <AnchorPane minHeight="0.0" prefHeight="415.0" prefWidth="684.0" styleClass="backgrnd" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="21.0" layoutY="14.0" prefHeight="52.0" prefWidth="100.0" text="Voiture">
+      <Label layoutX="21.0" layoutY="14.0" prefHeight="52.0" prefWidth="250.0" text="Location de Voiture de Luxe">
          <font>
             <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
@@ -24,20 +24,20 @@
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font></Label>
-      <Label layoutX="34.0" layoutY="212.0" text="Région" textFill="#1d6ea4" />
-      <Label layoutX="35.0" layoutY="168.0" text="Modèle" textFill="#1d6ea4" />
-      <Label layoutX="38.0" layoutY="121.0" text="Marque" textFill="#1d6ea4" />
+      <Label layoutX="34.0" layoutY="212.0" text="Marque de Voiture" textFill="#1d6ea4" />
+      <Label layoutX="35.0" layoutY="168.0" text="Modèle de Voiture" textFill="#1d6ea4" />
+      <Label layoutX="38.0" layoutY="121.0" text="Année de Fabrication" textFill="#1d6ea4" />
       <TextField layoutX="100.0" layoutY="164.0" prefHeight="26.0" prefWidth="184.0" style="-fx-border-color: #7294AC;" styleClass="tf_box" stylesheets="@../application/application.css" />
       <TextField layoutX="100.0" layoutY="208.0" prefHeight="26.0" prefWidth="184.0" style="-fx-border-color: #7294AC;" styleClass="tf_box" stylesheets="@../application/application.css" />
       <TextField layoutX="94.0" layoutY="299.0" prefHeight="26.0" prefWidth="161.0" style="-fx-border-color: #7294AC;" styleClass="tf_box" stylesheets="@../application/application.css" />
       <TextField layoutX="100.0" layoutY="373.0" prefHeight="26.0" prefWidth="161.0" style="-fx-border-color: #7294AC;" styleClass="tf_box" stylesheets="@../application/application.css" />
-      <Label layoutX="32.0" layoutY="304.0" text="Adresse" textFill="#1d6ea4">
+      <Label layoutX="32.0" layoutY="304.0" text="Type" textFill="#1d6ea4">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="386.0" text="CIN" textFill="#1d6ea4" />
-      <Label layoutX="21.0" layoutY="247.0" prefHeight="52.0" prefWidth="100.0" text="Locataire">
+      <Label layoutX="38.0" layoutY="386.0" text="Carburant" textFill="#1d6ea4" />
+      <Label layoutX="21.0" layoutY="247.0" prefHeight="52.0" prefWidth="250.0" text="Locataire">
          <font>
             <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
