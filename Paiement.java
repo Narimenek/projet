@@ -50,7 +50,7 @@ public class Paiement {
 	                statement.setDate(3, (java.sql.Date) this.dateDePaiement); 
 	                statement.setInt(4, this.idLocation);
 	                statement.setString(5, this.typeDePaiement); 
-	                statement.setInt(5, this.idClient); 
+	                statement.setInt(6, this.idClient); 
 
 	                // Exécution de la requête
 	                int rowsAffected = statement.executeUpdate();

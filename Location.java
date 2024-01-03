@@ -1,3 +1,4 @@
+
 package Package1;
 
 
@@ -20,11 +21,13 @@ public class Location {
     private String idClient;
     private int idVoitureDeLuxe;
     public String StatutLocation;
+    
     // Paramètres de connexion à la base de données
 
     private static final String url = "jdbc:mysql://localhost:3306/luxedrive";
     private static final String user = "root";
     private static final String passwd = "root";
+    
     //       Crée une nouvelle entrée de location dans la base de données.
 
     public void CreeLocation() {
@@ -214,8 +217,22 @@ public class Location {
     }
 
 
-
-  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

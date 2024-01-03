@@ -5,15 +5,16 @@ import java.time.LocalDate;
 public class LocationTestMain {
 
 
-		public static void main(String[] args) {
-		    testCreeLocation();
-		    testConfirmerLocation();
-		    testAnnulerLocation();
-		    testCalculerLePrix();
-		    testVerifierDisponibilitee();
-		}
+	public static void main(String[] args) {
+	    LocationTestMain locationTest = new LocationTestMain();
+	    locationTest.testCreeLocation();
+	    locationTest.testConfirmerLocation();
+	    locationTest.testAnnulerLocation();
+	    locationTest.testCalculerLePrix();
+	    locationTest.testVerifierDisponibilitee();
+	}
 
-		private static void testCreeLocation() {
+		private void testCreeLocation() {
 		    Location location = new Location();
 		    location.setDatedebut(LocalDate.now());
 		    location.setDateFin(LocalDate.now().plusDays(5));
@@ -26,10 +27,10 @@ public class LocationTestMain {
 
 		    location.CreeLocation();
 		}
+ 
 
 
-
-		private static void testConfirmerLocation() {
+		private void testConfirmerLocation() {
 		    Location location = new Location();
 		    // Initialisez les propriétés de location nécessaires pour la confirmation
 		    location.setIdLocation(1);
@@ -37,7 +38,7 @@ public class LocationTestMain {
 		    location.ConfirmerLocation();
 		}
 
-		private static void testAnnulerLocation() {
+		private  void testAnnulerLocation() {
 		    Location location = new Location();
 		    // Initialisez les propriétés de location nécessaires pour l'annulation
 		    location.setIdLocation(1);
@@ -45,7 +46,7 @@ public class LocationTestMain {
 		    location.AnnulerLocation();
 		}
 
-		private static void testCalculerLePrix() {
+		private  void testCalculerLePrix() {
 		    Location location = new Location();
 		    // Initialisez les propriétés de location nécessaires pour le calcul du prix
 		    location.setIdVoitureDeLuxe(101);
@@ -55,7 +56,7 @@ public class LocationTestMain {
 		    location.CalculerLePrix();
 		}
 
-		private static void testVerifierDisponibilitee() {
+		private void testVerifierDisponibilitee() {
 		    Location location = new Location();
 		    // Initialisez les propriétés de location nécessaires pour la vérification de disponibilité
 		    location.setIdVoitureDeLuxe(101);
