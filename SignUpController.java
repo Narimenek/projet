@@ -134,7 +134,7 @@ public class SignUpController {
 	    }
 	    private boolean isValidPhoneNumber(String phoneNumber) {
 	        // Utilisez une expression régulière pour valider le format du numéro de téléphone
-	        String phoneRegex = "^(0[1-9])(\\\\d{8})$";
+	        String phoneRegex = "^(0[1-9])(\\d{8})$";
 	        Pattern pattern = Pattern.compile(phoneRegex);
 	        Matcher matcher = pattern.matcher(phoneNumber);
 	        return matcher.matches();

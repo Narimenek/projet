@@ -26,7 +26,7 @@
          </font></Label>
       <Label layoutX="34.0" layoutY="212.0" text="Marque de Voiture" textFill="#1d6ea4" />
       <Label layoutX="35.0" layoutY="168.0" text="Modèle de Voiture" textFill="#1d6ea4" />
-      <Label layoutX="38.0" layoutY="121.0" text="Année de Fabrication" textFill="#1d6ea4" />
+  
       <TextField layoutX="100.0" layoutY="164.0" prefHeight="26.0" prefWidth="184.0" style="-fx-border-color: #7294AC;" styleClass="tf_box" stylesheets="@../application/application.css" />
       <TextField layoutX="100.0" layoutY="208.0" prefHeight="26.0" prefWidth="184.0" style="-fx-border-color: #7294AC;" styleClass="tf_box" stylesheets="@../application/application.css" />
       <TextField layoutX="94.0" layoutY="299.0" prefHeight="26.0" prefWidth="161.0" style="-fx-border-color: #7294AC;" styleClass="tf_box" stylesheets="@../application/application.css" />

@@ -11,4 +11,10 @@ public class LocationController extends Application {
 		
 	}
 
+	public void initData(String marque, double prix) {
+		// TODO Auto-generated method stub
+		
+	
+	}
+
 }
