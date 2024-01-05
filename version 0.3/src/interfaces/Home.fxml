@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <AnchorPane layoutY="-8.0" prefHeight="515.0" prefWidth="200.0" style="-fx-background-color: #c83434;" AnchorPane.bottomAnchor="-7.0" AnchorPane.topAnchor="-8.0">
+         <children>
+            <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#accueil" prefHeight="46.0" prefWidth="160.0" style="-fx-background-color: #c83434;" text="Accueil" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="180.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="226.0" mnemonicParsing="false" onMouseClicked="#voiture" prefHeight="46.0" prefWidth="160.0" style="-fx-background-color: #c83434;" text="Les voitures " textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="226.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#locataire" prefHeight="46.0" prefWidth="160.0" style="-fx-background-color: #c83434;" text="Les Locataires" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="272.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#location" prefHeight="46.0" prefWidth="160.0" style="-fx-background-color: #c83434;" text="Les Locations" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="318.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#contrat" prefHeight="46.0" prefWidth="160.0" style="-fx-background-color: #c83434;" text="Les contrats" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="364.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="20.0" layoutY="410.0" mnemonicParsing="false" onMouseClicked="#facture" prefHeight="46.0" prefWidth="160.0" style="-fx-background-color: #c83434;" text="Les factures" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="410.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="35.0" layoutY="456.0" mnemonicParsing="false" onMouseClicked="#historiques" prefHeight="46.0" prefWidth="144.0" style="-fx-background-color: #c83434;" text="Historiques" textFill="WHITE" />
+            <Label fx:id="labelNomUtilisateur" graphicTextGap="20.0" layoutX="61.0" layoutY="112.0" lineSpacing="1.0" prefHeight="56.0" prefWidth="101.0" textAlignment="CENTER" textFill="#2447b9" AnchorPane.leftAnchor="61.0" />
+            <Separator layoutX="21.0" layoutY="164.0" prefHeight="4.0" prefWidth="160.0" />
+            <Button alignment="BASELINE_LEFT" layoutX="47.0" layoutY="517.0" mnemonicParsing="false" onMouseClicked="#logout" prefHeight="46.0" prefWidth="124.0" style="-fx-background-color: #c83434;" text="se déconnecter" textFill="WHITE" />
+            <ImageView fitHeight="107.0" fitWidth="144.0" layoutX="47.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/usera.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="32.0" layoutX="19.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logout.png" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </AnchorPane>
+      <Pane layoutX="200.0" layoutY="-2.0" prefHeight="79.0" prefWidth="705.0" style="-fx-background-color: #050505;" />
+      <AnchorPane fx:id="root" layoutX="200.0" layoutY="77.0" prefHeight="485.0" prefWidth="705.0" />
+   </children>
+</AnchorPane>
