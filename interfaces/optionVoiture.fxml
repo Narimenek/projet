@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="0.0" prefHeight="415.0" prefWidth="684.0" styleClass="backgrnd" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OptionVoitureController">
+    <children>
+        <Label layoutX="300.0" layoutY="35.0" prefHeight="52.0" prefWidth="129.0" text=" OPTION">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="20.0" />
+            </font>
+        </Label>
+
+        <Button fx:id="addButton" layoutX="300.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" stylesheets="@../application/application.css" text="Ajouter" onAction="#addVoiture" />
+        <Button fx:id="updateButton" layoutX="300.0" layoutY="180.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" stylesheets="@../application/application.css" text="Modifier" onAction="#updateVoiture" />
+        <Button fx:id="deleteButton" layoutX="300.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" stylesheets="@../application/application.css" text="Supprimer" onAction="#deleteVoiture" />
+      <Button fx:id="rechercheBoutton" layoutX="300.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" stylesheets="@../application/application.css" text="rechercher" onAction="#rechercheVoiture" />
+    </children>
+</AnchorPane>
