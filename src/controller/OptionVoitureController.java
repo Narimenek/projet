@@ -62,6 +62,16 @@ public class OptionVoitureController {
             e.printStackTrace();
         }
     }
+    @FXML
+    void rechercheVoitureC(ActionEvent event) {
+        try {
+            fxml = FXMLLoader.load(getClass().getResource("/interfaces/RechercheClientC.fxml"));
+            root.getChildren().removeAll();
+            root.getChildren().setAll(fxml);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void loadFXML(String fxmlPath) {
         try {

@@ -10,17 +10,15 @@
 
 <AnchorPane fx:id="root" minHeight="0.0" prefHeight="415.0" prefWidth="684.0" styleClass="backgrnd" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddAdminController">
    <children>
-      <TextField layoutX="29.0" layoutY="53.0" prefHeight="32.0" prefWidth="178.0" promptText="Identifiant" style="-fx-border-color: #7294AC;" styleClass="tf_box" stylesheets="@../application/application.css" />
       <TextField layoutX="25.0" layoutY="105.0" prefHeight="32.0" prefWidth="188.0" promptText="Nom utilisateur" style="-fx-border-color: #7294AC;" styleClass="tf_box" stylesheets="@../application/application.css" />
       <TableView layoutX="295.0" layoutY="53.0" prefHeight="297.0" prefWidth="371.0" stylesheets="@../application/application.css" AnchorPane.leftAnchor="295.0" AnchorPane.rightAnchor="18.0">
         <columns>
-          <TableColumn minWidth="0.0" prefWidth="40.65216636657715" text="id" />
           <TableColumn minWidth="0.0" prefWidth="-1.0" text="Nom et prénom" />
             <TableColumn minWidth="0.0" prefWidth="0.0" />
             <TableColumn minWidth="0.0" prefWidth="89.0" text="Nom " />
             <TableColumn prefWidth="59.0" text="Tél" />
             <TableColumn prefWidth="109.0" text="Adresse mail" />
-            <TableColumn prefWidth="75.9915771484375" text="MDP" />
+            <TableColumn prefWidth="113.0" text="MDP" />
         </columns>
       </TableView>
       <Button layoutX="69.0" layoutY="362.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="100.0" styleClass="buttons" stylesheets="@../application/application.css" text="Ajouter" />

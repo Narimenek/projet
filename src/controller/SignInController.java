@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -45,29 +46,16 @@ public class SignInController implements Initializable {
         String passwd = "";
 
         try (Connection connection = DriverManager.getConnection(url, user, passwd)) {
-            String query = "SELECT * FROM client WHERE email = ? AND motDePasse = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
+            String clientQuery = "SELECT * FROM client WHERE email = ? AND motDePasse = ?";
+            String adminQuery = "SELECT * FROM admin WHERE mail = ? AND motDePasse = ?";
 
-            String email = txt_userName.getText();
-            String motDePasse = txt_password.getText();
-            statement.setString(1, email);
-            statement.setString(2, motDePasse);
-
-            ResultSet resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                loggedInUserName = resultSet.getString("nomClient");
-
-                VBox.getScene().getWindow().hide();
-                Stage home = new Stage();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaces/Home.fxml"));
-                Parent fxml = loader.load();
-                HomeController homeController = loader.getController();
-                homeController.setLoggedInUserName(loggedInUserName);
-
-                Scene scene = new Scene(fxml);
-                home.setScene(scene);
-                home.show();
+            // Vérifiez si l'utilisateur est un client
+            if (isUserInTable(connection, clientQuery)) {
+                loadHomePage("/interfaces/HomeClient.fxml");
+            }
+            // Vérifiez si l'utilisateur est un administrateur
+            else if (isUserInTable(connection, adminQuery)) {
+                loadHomePage("/interfaces/Home.fxml");
             } else {
                 showErrorDialog("Erreur d'authentification", "Adresse e-mail ou mot de passe incorrect.");
             }
@@ -76,6 +64,31 @@ public class SignInController implements Initializable {
             e.printStackTrace();
             showErrorDialog("Erreur", "Une erreur s'est produite lors de l'authentification.");
         }
+    }
+
+    private boolean isUserInTable(Connection connection, String query) throws Exception {
+        PreparedStatement statement = connection.prepareStatement(query);
+        String email = txt_userName.getText();
+        String motDePasse = txt_password.getText();
+        statement.setString(1, email);
+        statement.setString(2, motDePasse);
+
+        ResultSet resultSet = statement.executeQuery();
+        return resultSet.next();
+    }
+
+    private void loadHomePage(String cheminFxml) throws IOException {
+        loggedInUserName = getLoggedInUserName();// Supposant qu'il existe une méthode pour obtenir le nom complet de l'utilisateur
+        VBox.getScene().getWindow().hide();
+        Stage home = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(cheminFxml));
+        Parent fxml = loader.load();
+        HomeController homeController = loader.getController();
+        homeController.setLoggedInUserName(loggedInUserName);
+
+        Scene scene = new Scene(fxml);
+        home.setScene(scene);
+        home.show();
     }
 
     @FXML
@@ -102,7 +115,7 @@ public class SignInController implements Initializable {
     }
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(URL arg0, ResourceBundle  arg1) {
         // Initialisation, si nécessaire
     }
 

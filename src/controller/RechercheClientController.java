@@ -222,6 +222,17 @@ public class RechercheClientController {
                e.printStackTrace();
            }
        }
+    @FXML
+    private void retournerC(ActionEvent event) {
+    	   try {
+               fxml = FXMLLoader.load(getClass().getResource("/interfaces/optionVoitureClient.fxml"));
+               root.getChildren().removeAll();
+               root.getChildren().setAll(fxml);
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       }
+
 
        private void loadFXML(String fxmlPath) {
            try {

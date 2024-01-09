@@ -223,7 +223,7 @@ e.printStackTrace();
    @FXML
    void facture(MouseEvent event) {
     try {
-fxml = FXMLLoader.load(getClass().getResource("/interfaces/Factures.fxml"));
+fxml = FXMLLoader.load(getClass().getResource("/interfaces/annulation.fxml"));
 root.getChildren().removeAll();
 root.getChildren().setAll(fxml);
 } catch (IOException e) {
@@ -276,6 +276,91 @@ e.printStackTrace();
    void voiture(MouseEvent event) {
     try {
 fxml = FXMLLoader.load(getClass().getResource("/interfaces/optionVoiture.fxml"));
+root.getChildren().removeAll();
+root.getChildren().setAll(fxml);
+} catch (IOException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+   }
+   
+   
+   
+   @FXML
+   void accueilC(MouseEvent event) {
+    try {
+fxml = FXMLLoader.load(getClass().getResource("/interfaces/Accueil.fxml"));
+root.getChildren().removeAll();
+root.getChildren().setAll(fxml);
+} catch (IOException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+
+   }
+
+   
+
+   
+
+   @FXML
+   void factureC(MouseEvent event) {
+    try {
+fxml = FXMLLoader.load(getClass().getResource("/interfaces/annulation.fxml"));
+root.getChildren().removeAll();
+root.getChildren().setAll(fxml);
+} catch (IOException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+   }
+
+   @FXML
+   void historiquesC(MouseEvent event) {
+    try {
+fxml = FXMLLoader.load(getClass().getResource("/interfaces/Historique.fxml"));
+root.getChildren().removeAll();
+root.getChildren().setAll(fxml);
+} catch (IOException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+   }
+
+   @FXML
+   void locataireC(MouseEvent event) {
+    try {
+fxml = FXMLLoader.load(getClass().getResource("/interfaces/Locataire.fxml"));
+root.getChildren().removeAll();
+root.getChildren().setAll(fxml);
+} catch (IOException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+   }
+
+   @FXML
+   void locationC(MouseEvent event) {
+    try {
+fxml = FXMLLoader.load(getClass().getResource("/interfaces/Location.fxml"));
+root.getChildren().removeAll();
+root.getChildren().setAll(fxml);
+} catch (IOException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+   }
+
+   @FXML
+   void voitureC(MouseEvent event) {
+    try {
+fxml = FXMLLoader.load(getClass().getResource("/interfaces/optionVoitureClient.fxml"));
 root.getChildren().removeAll();
 root.getChildren().setAll(fxml);
 } catch (IOException e) {

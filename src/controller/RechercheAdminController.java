@@ -26,6 +26,7 @@ public class RechercheAdminController {
                e.printStackTrace();
            }
        }
+  
 
        private void loadFXML(String fxmlPath) {
            try {
